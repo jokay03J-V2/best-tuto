@@ -2,7 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@angular-devkit/build-angular': ^14.2.1
-  '@angular/animations': ^14.0.0
+  '@angular/animations': ^14.2.3
+  '@angular/cdk': ^13.3.9
   '@angular/cli': ~14.2.1
   '@angular/common': ^14.0.0
   '@angular/compiler': ^14.0.0
@@ -12,7 +13,11 @@ specifiers:
   '@angular/platform-browser': ^14.0.0
   '@angular/platform-browser-dynamic': ^14.0.0
   '@angular/router': ^14.0.0
+  '@nebular/eva-icons': 9.1.0-rc.6
+  '@nebular/theme': 9.1.0-rc.6
+  '@schematics/angular': ~14.2.1
   '@types/jasmine': ~4.0.0
+  eva-icons: ^1.1.3
   jasmine-core: ~4.3.0
   karma: ~6.4.0
   karma-chrome-launcher: ~3.1.0
@@ -26,6 +31,7 @@ specifiers:
 
 dependencies:
   '@angular/animations': 14.2.3_@angular+core@14.2.3
+  '@angular/cdk': 13.3.9_j76mspybhfdi3nyx2gtgdhpdye
   '@angular/common': 14.2.3_dl6nhes4q4z2qmdibnjjcqvs3m
   '@angular/compiler': 14.2.3_@angular+core@14.2.3
   '@angular/core': 14.2.3_rxjs@7.5.7+zone.js@0.11.8
@@ -33,6 +39,9 @@ dependencies:
   '@angular/platform-browser': 14.2.3_aryoalwxgr43u4krtv6zz65zni
   '@angular/platform-browser-dynamic': 14.2.3_os5nft2oqiimw43y5rxbvauiru
   '@angular/router': 14.2.3_bzitv6nc6qyeo4tcxlc4thruh4
+  '@nebular/eva-icons': 9.1.0-rc.6_iw5xpk3r6fyiase2agl6uwgguu
+  '@nebular/theme': 9.1.0-rc.6_gg2i63xg3zparc3lt4ytc3nyzq
+  eva-icons: 1.1.3
   rxjs: 7.5.7
   tslib: 2.4.0
   zone.js: 0.11.8
@@ -41,6 +50,7 @@ devDependencies:
   '@angular-devkit/build-angular': 14.2.3_nfsy5vzkg6jyyyhmeuoc4xup24
   '@angular/cli': 14.2.3
   '@angular/compiler-cli': 14.2.3_nftm4gvtckfxo3v4dp2rvmjvc4
+  '@schematics/angular': 14.2.3
   '@types/jasmine': 4.0.3
   jasmine-core: 4.3.0
   karma: 6.4.1
@@ -235,6 +245,21 @@ packages:
     dependencies:
       '@angular/core': 14.2.3_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.4.0
+    dev: false
+
+  /@angular/cdk/13.3.9_j76mspybhfdi3nyx2gtgdhpdye:
+    resolution: {integrity: sha512-XCuCbeuxWFyo3EYrgEYx7eHzwl76vaWcxtWXl00ka8d+WAOtMQ6Tf1D98ybYT5uwF9889fFpXAPw98mVnlo3MA==}
+    peerDependencies:
+      '@angular/common': ^13.0.0 || ^14.0.0-0
+      '@angular/core': ^13.0.0 || ^14.0.0-0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 14.2.3_dl6nhes4q4z2qmdibnjjcqvs3m
+      '@angular/core': 14.2.3_rxjs@7.5.7+zone.js@0.11.8
+      rxjs: 7.5.7
+      tslib: 2.4.0
+    optionalDependencies:
+      parse5: 5.1.1
     dev: false
 
   /@angular/cli/14.2.3:
@@ -1840,6 +1865,36 @@ packages:
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
+
+  /@nebular/eva-icons/9.1.0-rc.6_iw5xpk3r6fyiase2agl6uwgguu:
+    resolution: {integrity: sha512-0K75qlQgpw9Txy7iWz48zpYDRK/JfToPtOJWQoP7a1E6IklDrx5f80ZefLVuem0x1k1Mfac4hlllp6mpr1hxTg==}
+    peerDependencies:
+      '@nebular/theme': 9.1.0-rc.6
+      eva-icons: ^1.1.2
+    dependencies:
+      '@nebular/theme': 9.1.0-rc.6_gg2i63xg3zparc3lt4ytc3nyzq
+      eva-icons: 1.1.3
+      tslib: 2.4.0
+    dev: false
+
+  /@nebular/theme/9.1.0-rc.6_gg2i63xg3zparc3lt4ytc3nyzq:
+    resolution: {integrity: sha512-tKWliMGsZG8bip7EYgaubvM2nkVZ1+6sp12WFEPPruI0/ChllmxFQOO4nY03h/Yxea2TiAPD4VYia3OF6xWDxg==}
+    peerDependencies:
+      '@angular/animations': ^13.0.0
+      '@angular/cdk': ^13.0.0
+      '@angular/common': ^13.0.0
+      '@angular/core': ^13.0.0
+      '@angular/router': ^13.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/animations': 14.2.3_@angular+core@14.2.3
+      '@angular/cdk': 13.3.9_j76mspybhfdi3nyx2gtgdhpdye
+      '@angular/common': 14.2.3_dl6nhes4q4z2qmdibnjjcqvs3m
+      '@angular/core': 14.2.3_rxjs@7.5.7+zone.js@0.11.8
+      '@angular/router': 14.2.3_bzitv6nc6qyeo4tcxlc4thruh4
+      rxjs: 7.5.7
+      tslib: 2.4.0
+    dev: false
 
   /@ngtools/webpack/14.2.3_2zyjtarfccta2rey7mn5js2cqu:
     resolution: {integrity: sha512-/9bOlmpx7a5P8QhjmggxEJ6LX5qvfkBZhxM8Orjr6ZjJcmAfm+3wiUDzU3EM+5M0YV3y3+dvQpn6Jrwy9y4rfQ==}
@@ -3553,6 +3608,10 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
     dev: true
+
+  /eva-icons/1.1.3:
+    resolution: {integrity: sha512-QBSEWNbEx1H0numXP1qgxKVCZHonRaky5ft4pGzQBcO4cy7mEja6TuJ8rc7BqX2pmkvetVQWKDH+DK/8y7GTag==}
+    dev: false
 
   /eventemitter-asyncresource/1.0.0:
     resolution: {integrity: sha512-39F7TBIV0G7gTelxwbEqnwhp90eqCPON1k0NwNfwhgKn4Co4ybUbj2pECcXT0B3ztRKZ7Pw1JujUUgmQJHcVAQ==}
@@ -5277,6 +5336,12 @@ packages:
     dependencies:
       parse5: 6.0.1
     dev: true
+
+  /parse5/5.1.1:
+    resolution: {integrity: sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /parse5/6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}

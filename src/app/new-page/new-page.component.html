@@ -1,0 +1,20 @@
+<div class="container">
+<h1>Nouveaux tuto</h1>
+<nb-card>
+  <nb-card-body class="example-items-col">
+    <form [formGroup]="formGroup">
+      <input type="url" nbInput [status]="errorUrl? 'danger' : 'basic'" placeholder="url" formControlName="url">
+      <nb-tag-list (tagRemove)="onTagRemove($event)" class="tags">
+      <nb-tag *ngFor="let tag of tags" [text]="tag" removable="true"></nb-tag>
+      <input type="text"
+             placeholder="tags"
+             status="primary"
+             nbTagInput
+             formControlName="tags"
+             fullWidth>
+    </nb-tag-list>
+      <button nbButton type="button" (click)="Submit()">envoyer</button>
+    </form>
+  </nb-card-body>
+</nb-card>
+</div>
