@@ -1,8 +1,8 @@
 export type Tuto = {
-  id: number;
+  id?: number;
   url: string;
   tags: Tags[];
-  author: number;
+  author: string;
 }
 
 export enum Tags {

@@ -10,13 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NbButtonModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbIconModule, NbActionsModule, NbListModule, NbCardModule, NbSelectModule, NbInputModule, NbFormFieldModule, NbToastrModule, NbTagModule, NbAutocompleteModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NewPageComponent } from './new-page/new-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     AccountPageComponent,
-    NewPageComponent
+    NewPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
