@@ -1,4 +1,4 @@
-<h1>Compte</h1>
+<h1>S'enregistrer</h1>
 <div *ngIf="user" class="container">
     <div>{{user.email}}</div><button nbButton (click)="logOut()">déconnexion</button>
 </div>
@@ -22,5 +22,5 @@
             </form>
         </nb-card-body>
     </nb-card>
-    <button nbButton status="info" (click)="navigateToSignUp()">s'enregistrer</button>
+    <button nbButton status="info" (click)="navigateToSignIn()">s'identifier</button>
 </div>

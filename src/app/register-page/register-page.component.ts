@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
+import { ApiError } from '@supabase/supabase-js';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
-  selector: 'app-account-page',
-  templateUrl: './account-page.component.html',
-  styleUrls: ['./account-page.component.scss']
+  selector: 'app-register-page',
+  templateUrl: './register-page.component.html',
+  styleUrls: ['./register-page.component.scss']
 })
-export class AccountPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit {
   showPassword = false;
   formGroup!: FormGroup;
   errorEmail = false;
@@ -33,7 +34,7 @@ export class AccountPageComponent implements OnInit {
       if (this.formGroup.valid) {
         this.errorEmail = false;
         this.errorPassword = false;
-        await this.authService.login(this.formGroup.controls["email"].value, this.formGroup.controls["password"].value);
+        await this.authService.register(this.formGroup.controls["email"].value, this.formGroup.controls["password"].value);
         this.router.navigateByUrl("/");
       } else {
         if (this.hasError("email", "pattern")) {
@@ -60,8 +61,21 @@ export class AccountPageComponent implements OnInit {
             { preventDuplicates: true, status: 'danger' });
         }
       }
-    } catch (err) {
-      this.toastrService.show("veuillez vérifier vos identifiant", "identifiant incorrect !")
+    } catch (err: any) {
+      console.log(err);
+      
+      switch(err.message) {
+        case "User already registered":
+          this.toastrService.show(
+            'vous êtes déjà enregistrer',
+            `erreur`,
+            { preventDuplicates: true, status: 'danger' });
+        break;
+
+        default:
+          this.toastrService.show("veuillez vérifier vos identifiant", "identifiant incorrect !")
+          break;
+      }
     }
   }
 
@@ -76,8 +90,8 @@ export class AccountPageComponent implements OnInit {
     return 'password';
   }
 
-  async navigateToSignUp() {
-    this.router.navigateByUrl("/register")
+  async navigateToSignIn() {
+    this.router.navigateByUrl("account")
   }
 
   logOut() {

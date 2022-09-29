@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DbService } from '../services/db/db.service';
-import { Tags } from '../types';
+import { Tags, Tuto } from '../types';
 
 @Component({
   selector: 'app-home-page',
@@ -9,9 +9,15 @@ import { Tags } from '../types';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  tutos = this.db.getTutos();
+  tutos = Array(this.getTutorial());
   formGroup!: FormGroup;
   constructor(private db: DbService) { }
+
+  async getTutorial() {
+    let tutos = await this.db.getTutos()
+    console.log(tutos);
+    return tutos
+  }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({

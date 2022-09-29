@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbTagComponent, NbTagInputAddEvent, NbToastrService } from '@nebular/theme';
+import { User } from '@supabase/supabase-js';
 import { AuthService } from '../services/auth/auth.service';
 import { DbService } from '../services/db/db.service';
-import { Tags } from '../types';
+import { Tags, Tuto } from '../types';
 
 @Component({
   selector: 'app-new-page',
@@ -11,6 +12,7 @@ import { Tags } from '../types';
   styleUrls: ['./new-page.component.scss']
 })
 export class NewPageComponent implements OnInit {
+  user!: User
   formGroup!: FormGroup;
   errorUrl = false;
   errorTag = false;
@@ -39,7 +41,8 @@ export class NewPageComponent implements OnInit {
 
   Submit() {
     if(this.formGroup.valid) {
-      this.dbService.addTutorial(this.formGroup.value.url, this.tags, this.authService.randomId());
+      let tuto: Tuto = { url: this.formGroup.controls["url"].value, tags: this.tags, author: this.user.id}
+      this.dbService.addTuto(tuto);
       console.log(this.dbService.getTutos());
     } else {
       console.log(this.tags);
