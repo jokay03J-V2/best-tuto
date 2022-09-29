@@ -1,37 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Tags, Tuto } from 'src/app/types';
+import { Tuto } from 'src/app/types';
+import { baseClient } from '../baseClient';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  items: Tuto[] = [];
 
-  constructor() { }
+  constructor(private clientSup: baseClient) { }
 
-  addTutorial(url: string, tags: Tags[], author_id: number) {
-    this.items.push({
-      id: this.randomId(),
-      url,
-      tags: tags,
-      author: author_id
+  client = this.clientSup.client;
+
+  async addTuto(tuto: Tuto) {
+    const response = await this.client
+    .from<Tuto>('tutos')
+    .insert(tuto)
+  
+    return response.data
+  }
+
+  async getTutos() {
+    let data: Tuto[];
+    await this.client.from<Tuto>("tutos").then((tutos) => {
+      if(tutos.data === null) return data = []
+      return data = tutos.data
     });
   }
 
-  removeTutorial(id: number) {
-    this.items = this.items.filter(item => item.id !== id);
-  };
+  async getTuto(id: string) {
+    const response = await this.client.from("tutos").select("id").eq("id", id);
 
-  getTutos(): Tuto[] {
-    return this.items;
-  }
-
-  getTuto(id: number) {
-    let i = this.items.findIndex(item => item.id === id);
-    return this.items[i];
-  }
-
-  randomId(): number {
-    return Math.floor(Math.random() * 100);
+    return response.data;
   }
 }
