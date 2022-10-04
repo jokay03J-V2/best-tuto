@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DbService } from '../services/db/db.service';
 import { Tags, Tuto } from '../types';
@@ -9,21 +11,26 @@ import { Tags, Tuto } from '../types';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  tutos = Array(this.getTutorial());
   formGroup!: FormGroup;
-  constructor(private db: DbService) { }
+  loading = true;
+  tutos: any;
 
-  async getTutorial() {
-    let tutos = await this.db.getTutos()
-    console.log(tutos);
-    return tutos
-  }
+  constructor(private db: DbService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      url: new FormControl('', [Validators.required, Validators.pattern("^(http|https)://*.*/*")]),
-      tags: new FormControl([], [Validators.required]),
-    });
+    this.db.getTutos().subscribe((tutos) => {
+      console.log(tutos);
+      this.tutos = tutos
+      this.loading = false;
+        this.cdr.markForCheck();        
+    })
+  }
+
+  downVote(div: HTMLDivElement) {
+    let content = div.textContent;
+    let num = parseInt(content!)
+    num = num ++
+    div.textContent = num.toString();
   }
 
   hasControlError(controleName: string, errorName: string): boolean {

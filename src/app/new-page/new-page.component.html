@@ -3,11 +3,11 @@
 <nb-card>
   <nb-card-body class="example-items-col">
     <form [formGroup]="formGroup">
-      <input type="url" nbInput [status]="errorUrl? 'danger' : 'basic'" placeholder="url" formControlName="url">
-      <nb-tag-list (tagRemove)="onTagRemove($event)" class="tags">
+      <input type="url" nbInput [status]="errorUrl? 'danger' : 'basic'" placeholder="url" formControlName="url" fullWidth>
+      <nb-tag-list (tagRemove)="onTagRemove($event)">
       <nb-tag *ngFor="let tag of tags" [text]="tag" removable="true"></nb-tag>
       <input type="text"
-             placeholder="tags"
+             placeholder="enlever ou laisser les tags"
              status="primary"
              nbTagInput
              formControlName="tags"
