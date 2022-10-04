@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { from, Observable, of, pipe } from 'rxjs';
 import { Tuto } from 'src/app/types';
+import { environment } from 'src/environments/environment';
 import { baseClient } from '../baseClient';
 
 @Injectable({
@@ -7,24 +10,28 @@ import { baseClient } from '../baseClient';
 })
 export class DbService {
 
-  constructor(private clientSup: baseClient) { }
+  constructor(private clientSup: baseClient, private http: HttpClient) { }
 
   client = this.clientSup.client;
+  tutos: Tuto[] | null = null
 
   async addTuto(tuto: Tuto) {
     const response = await this.client
-    .from<Tuto>('tutos')
-    .insert(tuto)
-  
+      .from<Tuto>('tutos')
+      .insert(tuto)
+
+    if (response.error) throw response.error;
+
     return response.data
   }
 
-  async getTutos() {
-    let data: Tuto[];
-    await this.client.from<Tuto>("tutos").then((tutos) => {
-      if(tutos.data === null) return data = []
-      return data = tutos.data
-    });
+  getTutos() {
+    // let { error, data } = await this.client.from<Tuto>("tutos")
+    // if(error) throw error
+    // this.tutos = data;
+    return this.http.get(`${environment.supabaseUrl}/rest/v1/tutos`,
+    { headers: { Authorization: `Bearer ${environment.supabaseKey}`, apikey: environment.supabaseKey }
+  })
   }
 
   async getTuto(id: string) {
