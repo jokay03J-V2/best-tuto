@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { baseClient } from '../baseClient';
 import { createClient, Session, User } from "@supabase/supabase-js"
 import { environment } from 'src/environments/environment';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private clientBase: baseClient) { }
-
   user: User | null = null
   client = this.clientBase.client
+
+  constructor(private clientBase: baseClient) {
+    this.client.auth.onAuthStateChange((event, session) => {
+      this.user = session?.user ?? null
+    })
+  }
 
   async login(email: any,password: any) {
     let { user, error } = await this.client.auth.signIn({email,password})
@@ -33,5 +38,9 @@ export class AuthService {
 
     return true;
   }
+
+  // onAuthChange(f: any) {
+  //   return this.client.auth.onAuthStateChange(f)
+  // }
 
 }
