@@ -1,7 +1,7 @@
 <nb-layout>
   <nb-layout-header fixed>
     <div class="navbar" role="navigation">
-      <h1>best tuto</h1>
+      <h1>Best tuto</h1>
       <nb-select placeholder="Select Showcase" [(selected)]="selectedTheme" (selectedChange)="change(selectedTheme)">
         <nb-option value="default">clair</nb-option>
         <nb-option value="dark">sombre</nb-option>
@@ -10,11 +10,12 @@
       </nb-select>
       <nb-actions size="large" >
         <nb-action icon="home-outline" routerLink=""></nb-action>
-        <nb-action icon="file-add-outline" routerLink="new"></nb-action>
+        <nb-action icon="file-add-outline" routerLink="new" title="Ajouter un tuto"></nb-action>
         <nb-action icon="person-outline" routerLink="account" icon="person-outline"
         [badgeText]="user ? 'C' : 'N'"
         badgePosition="top right"
-        [badgeStatus]="user? 'success': 'danger'"></nb-action>
+        [badgeStatus]="user? 'success': 'danger'"
+        title="Compte"></nb-action>
       </nb-actions>
     </div>
   </nb-layout-header>

@@ -37,3 +37,25 @@ button {
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+button:hover > nb-icon {
+  color: #00d68f;
+}
+
+.not-tuto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+nb-card {
+  width: 80%x²
+}
+
+.tutos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

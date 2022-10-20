@@ -1,31 +1,11 @@
 <h1>Accueil</h1>
-<!-- <nb-card>
-    <nb-list
-      nbInfiniteList
-      listenWindowScroll
-      [threshold]="500">
-      <nb-list-item *ngFor="let tuto of getTutos">
-        <p>{{tuto.url}}</p>
-      </nb-list-item>
-    </nb-list>
-  </nb-card> -->
-<!-- <div *ngFor="let tuto of GetTutos">{{tuto}}</div> -->
-<div *ngIf="tutos">
+<div *ngIf="tutos" class="tutos">
   <nb-card>
     <nb-list nbInfiniteList listenWindowScroll [threshold]="500">
-      <nb-list-item *ngFor="let tuto of tutos" class="tuto">
-        <div class="controls">
-          <div class="control">10<button nbButton>
-              <nb-icon icon="arrow-up-outline"></nb-icon>
-            </button></div>
-          <div class="control"><button nbButton (click)="downVote(down)">
-              <nb-icon icon="arrow-down-outline"></nb-icon>
-            </button>
-            <div #down>5</div>
-          </div>
-        </div>
-        <div><a [href]="tuto.url">{{tuto.url}}</a></div>
+      <nb-list-item *ngFor="let tuto of tutos">
+        <app-tuto-post [tuto]="tuto"></app-tuto-post>
       </nb-list-item>
+      <nb-list-item *ngIf="tutos.length === 0" class="not-tuto">aucun tuto trouver</nb-list-item>
     </nb-list>
   </nb-card>
 </div>

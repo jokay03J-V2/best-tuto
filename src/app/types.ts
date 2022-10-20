@@ -3,14 +3,16 @@ export type Tuto = {
   url: string;
   tags: Tags[];
   author_uuid: string;
+  summary: string;
+  title: string;
+  upvote: Upvote[] | null;
 }
 
-export enum Tags {
-  debutant = 'débutant',
-  intermediaire = 'intermédiaire',
-  avance = 'avancé',
-  js = 'javascript',
-  ts = 'typescript',
-  html = 'html',
-  css = 'css',
+export type Tags = {
+  id: string;
+  label: string;
+}
+
+type Upvote = {
+  uuid: number;
 }

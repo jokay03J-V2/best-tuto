@@ -1,0 +1,41 @@
+h2 {
+    margin: 0px;
+    color: #222b45
+}
+
+.tags_and_upvote {
+    display: flex;
+}
+
+.upvotes {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.upvote {
+    font-size: 20px;
+    margin: 5px;
+    margin-left: 0px;
+}
+
+nb-tag-list {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+nb-tag {
+    cursor: pointer;
+}
+
+.upvote_icon {
+    color: green;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}

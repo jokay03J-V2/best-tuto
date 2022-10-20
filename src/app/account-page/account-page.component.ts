@@ -79,6 +79,10 @@ export class AccountPageComponent implements OnInit {
     }
   }
 
+  SignInWithGithub() {
+    this.authService.loginWithGithub()
+  }
+
   toggleShowPassword() {
     this.showPassword = !this.showPassword;
   }

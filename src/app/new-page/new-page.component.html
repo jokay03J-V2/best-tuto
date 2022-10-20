@@ -3,16 +3,17 @@
 <nb-card>
   <nb-card-body class="example-items-col">
     <form [formGroup]="formGroup">
+      <input nbInput placeholder="titre" formControlName="title" fullWidth>
+      <input nbInput placeholder="resumer" formControlName="summary" fullWidth>
       <input type="url" nbInput [status]="errorUrl? 'danger' : 'basic'" placeholder="url" formControlName="url" fullWidth>
-      <nb-tag-list (tagRemove)="onTagRemove($event)">
-      <nb-tag *ngFor="let tag of tags" [text]="tag" removable="true"></nb-tag>
-      <input type="text"
-             placeholder="enlever ou laisser les tags"
-             status="primary"
-             nbTagInput
-             formControlName="tags"
-             fullWidth>
-    </nb-tag-list>
+      <nb-form-field>
+        <nb-icon nbPrefix icon="pricetags-outline"></nb-icon>
+        <nb-select multiple placeholder="tags" fullWidth>
+          <nb-option><nb-icon icon="trash-2-outline"></nb-icon>rénitialiser</nb-option>
+          <nb-option *ngFor="let tag of tags" [value]="tag.label">{{tag.label}}</nb-option>
+        </nb-select>
+      </nb-form-field>
+      
       <button nbButton type="button" (click)="Submit()">envoyer</button>
     </form>
   </nb-card-body>

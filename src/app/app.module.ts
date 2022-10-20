@@ -11,6 +11,7 @@ import { NbButtonModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbIconM
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NewPageComponent } from './new-page/new-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { TutoPostComponent } from './tuto-post/tuto-post.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     HomePageComponent,
     AccountPageComponent,
     NewPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    TutoPostComponent
   ],
   imports: [
     BrowserModule,

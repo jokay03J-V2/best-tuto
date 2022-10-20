@@ -21,14 +21,16 @@ export class AuthService {
   async login(email: any,password: any) {
     let { user, error } = await this.client.auth.signIn({email,password})
     if(error) throw error
-    this.user = user
+  }
+
+  async loginWithGithub() {
+    let { user, error } = await this.client.auth.signIn({ provider: "github"})
   }
 
   async register(email: any, password: any) {
     let { user, error } = await this.client.auth.signUp({ email, password })
     if(error) 
       throw error
-    this.user = user
   }
 
   async signOut() {

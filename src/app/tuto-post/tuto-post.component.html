@@ -1,0 +1,15 @@
+<article>
+    <h2><a [href]="tuto!.url">{{tuto!.title}}</a></h2>
+    <p>{{tuto!.summary}}</p>
+    <div class="tags_and_upvote">
+        <div class="upvotes">
+            <div class="upvote" #upvote>{{tuto!.upvote? tuto!.upvote : 0}}</div><button nbButton class="upvote_button"
+                (click)="UpVote(upvote)">
+                <nb-icon icon="arrow-up-outline" class="upvote_icon"></nb-icon>
+            </button>
+        </div>
+        <nb-tag-list *ngFor="let tag of tuto!.tags">
+            <nb-tag status="primary" appearance="filled" [text]="tag.label"></nb-tag>
+        </nb-tag-list>
+    </div>
+</article>
